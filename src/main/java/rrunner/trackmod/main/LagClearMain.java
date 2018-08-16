@@ -6,8 +6,10 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import rrunner.trackmod.commandStuff.CommandChangeColor;
 import rrunner.trackmod.guiStuff.RenderGuiHandler;
 import rrunner.trackmod.keybindStuff.KeyInputHandler;
 import rrunner.trackmod.keybindStuff.Keybinds;
@@ -45,5 +47,13 @@ public class LagClearMain
     public void postInit(FMLPostInitializationEvent event)
     {
 
+    }
+
+    @Mod.EventHandler
+    public void serverLoad(FMLServerStartingEvent event)
+    {
+        // register server commands
+
+        event.registerServerCommand(new CommandChangeColor());
     }
 }

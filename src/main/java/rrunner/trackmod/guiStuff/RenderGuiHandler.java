@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import rrunner.trackmod.util.Util;
 import scala.actors.threadpool.Arrays;
 
 import java.util.HashSet;
@@ -18,17 +19,19 @@ public class RenderGuiHandler
     public String baseName = "Next Lag Clear: ";                    // Dynamic name to track the time left
     public static boolean showTimer = true;                         // Boolean controlling whether the timer should be rendered
     protected static String hexColor = "32CD32";                    // Color of the timer string
-    protected enum colors
+    public enum colors
     {
         DARK_RED, RED, GOLD, YELLOW, DARK_GREEN, GREEN, AQUA,
         DARK_AQUA, BLUE, LIGHT_PURPLE, DARK_PURPLE, WHITE,
         GRAY, DARK_GRAY, BLACK;
     };
 
-    private static final String HEX_COLORS[] = {"AA0000", "FF5555", "FFAA00", "FFFF55", "00AA00", "55FF55",
-            "55FFFF", "00AAAA", "0000AA", "5555FF", "FF55FF", "AA00AA",
+    private static final String HEX_COLORS[] =
+            {"AA0000", "FF5555", "FFAA00", "FFFF55", "00AA00", "55FF55",
+            "55FFFF", "00AAAA", "0000AA", "FF55FF", "AA00AA",
             "FFFFFF", "AAAAAA", "555555", "000000"};
-    private static final String hexNames[] = {"DARK_RED", "RED", "GOLD", "YELLOW", "DARK_GREEN", "GREEN",
+    private static final String hexNames[] =
+            {"DARK_RED", "RED", "GOLD", "YELLOW", "DARK_GREEN", "GREEN",
             "AQUA", "DARK_AQUA", "BLUE", "LIGHT_PURPLE", "DARK_PURPLE",
             "WHITE", "GRAY", "DARK_GRAY", "BLACK"};
     private static final Set<String> HEX_NAMES = new HashSet<String>(Arrays.asList(
@@ -77,18 +80,27 @@ public class RenderGuiHandler
 
     public static void setHexColor(String newHexColor)
     {
+        newHexColor = newHexColor.toUpperCase();
         if(HEX_NAMES.contains(newHexColor))
         {
             for(int count = 0; count < hexNames.length; count++)
             {
-                if(newHexColor == hexNames[count])
+                if(newHexColor.equals(hexNames[count]))
                 {
                     hexColor = HEX_COLORS[count];
                 }
             }
-        }else
+        }else if(newHexColor.length() == 6 && Util.isHex(newHexColor))
         {
             hexColor = newHexColor;
+        }else
+        {
+            return;
         }
+    }
+
+    public static Set<String> getHexNames()
+    {
+        return HEX_NAMES;
     }
 }

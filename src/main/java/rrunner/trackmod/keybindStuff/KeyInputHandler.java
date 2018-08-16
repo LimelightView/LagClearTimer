@@ -12,7 +12,6 @@ public class KeyInputHandler
         if(Keybinds.toggleTimer.isPressed())
         {
             RenderGuiHandler.showTimer = !RenderGuiHandler.showTimer;
-            RenderGuiHandler.setHexColor("8976FF");
         }
     }
 }
