@@ -6,7 +6,7 @@ import org.lwjgl.input.Keyboard;
 
 public class Keybinds
 {
-    private static KeyBinding toggleTimer;
+    public static KeyBinding toggleTimer;
 
     public static void register()
     {
