@@ -1,4 +1,4 @@
-# LagClearTimer
+#LagClearTimer
 Description: A client-side mod that creates a timer to be used to track the Lag Clear on a Minecraft Server.
 
 Current Features:
