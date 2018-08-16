@@ -1,0 +1,16 @@
+[
+{
+  "modid": "mcccleartracker",
+  "name": "RRunner's MCC Prison Lag Clear Tracker",
+  "description": "Tracks the time until the next Lag Clear on MCCentral's Prison servers.",
+  "version": "1.0",
+  "mcversion": "1.8.9",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["RRunner"],
+  "credits": "CJMinecraft for his proxy tutorial. (https://www.youtube.com/watch?v=f07kbcLWUIg)",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
