@@ -1,0 +1,16 @@
+1.0.0 - 08/16/2018
++ Published code to Github
++ Contained a countdown timer (7 Min 40 Sec)
+
+1.0.1 - 08/16/2018
++ Added keybind to hide / show timer
++ Adding color functionality
+
+1.0.2 - 08/16/2018
++ Added default color functionality
++ Added hexadecimal color functionality
++ Added /color command (Changes the color of the GUI text)
+
+1.0.3 - 08/17/2018
++ Moved /color command from server side to client side
++ Refactored code for legibility
