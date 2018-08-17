@@ -1,12 +1,12 @@
 package rrunner.trackmod.main;
 
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import rrunner.trackmod.commandStuff.CommandChangeColor;
@@ -26,12 +26,20 @@ public class LagClearMain
 
     public static final Logger logger = LogManager.getLogger(Reference.MODID);
 
-    // Register capabilities / create and read configuration
+    // Register capabilities / create and read configuration / Add client side commands
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        MinecraftForge.EVENT_BUS.register(this);
-        Keybinds.register();
+        try{
+            instance = this;
+            MinecraftForge.EVENT_BUS.register(this);
+            Keybinds.register();
+            ClientCommandHandler.instance.registerCommand(new CommandChangeColor());
+        }catch(Exception e)
+        {
+            System.out.println("An exception occurred in preInit(). Stacktrace below:");
+            e.printStackTrace();
+        }
     }
 
     // Register world generators, event handlers, and sending IMC messages
@@ -47,13 +55,5 @@ public class LagClearMain
     public void postInit(FMLPostInitializationEvent event)
     {
 
-    }
-
-    @Mod.EventHandler
-    public void serverLoad(FMLServerStartingEvent event)
-    {
-        // register server commands
-
-        event.registerServerCommand(new CommandChangeColor());
     }
 }

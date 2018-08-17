@@ -11,7 +11,7 @@ public class KeyInputHandler
     {
         if(Keybinds.toggleTimer.isPressed())
         {
-            RenderGuiHandler.showTimer = !RenderGuiHandler.showTimer;
+            RenderGuiHandler.flipShowTimer();
         }
     }
 }
