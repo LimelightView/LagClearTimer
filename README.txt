@@ -18,3 +18,7 @@ Possible Features:
 1. GUI for the color of the timer text
 2. GUI for the location of the timer
 3. GUI to handle target message and countdown
+
+Download
+1. Download the repository as a zip
+2. Add the LagClearTracker-1.x.x.jar file to your mods folder
